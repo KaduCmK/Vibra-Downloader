@@ -41,7 +41,11 @@ class MainViewModel(private val application: Application) : AndroidViewModel(app
     }
 
     fun idExtract(videoId: String): String {
-//        val subId = videoId.substringAfter("?v=")
-        return videoId.substringAfter("?v=").substringBefore("?")
+        return videoId
+            .substringAfter("://")
+            .substringAfter('/')
+            .substringAfter("?v=")
+            .substringBefore("&")
+            .substringBefore("?")
     }
 }
